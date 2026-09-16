@@ -16,6 +16,13 @@ dump() {
   adb pull /sdcard/ui.xml "$1" >/dev/null
 }
 
+foreground() {
+  adb shell dumpsys activity activities | grep -E "topResumedActivity|mResumedActivity" | tee -a out/foreground.txt
+}
+
+adb logcat -c
+foreground
+
 center() {
   python3 - "$1" "$2" <<'PY'
 import re, sys
@@ -41,6 +48,8 @@ field=""
 [ -n "$field" ] || field=$(center out/ui1.xml 'class="android.widget.EditText"')
 adb shell input tap $field
 sleep 1
+foreground
+dump out/ui_after_tap.xml
 
 touch out/recording
 (
@@ -55,8 +64,11 @@ sleep 2
 
 adb shell input text "I%sam%sso%ssorry"
 sleep 1
+foreground
 adb shell input keyevent 62
 sleep 2
+foreground
+dump out/ui_after_first_word.xml
 adb shell input text "Sorry"
 sleep 1
 adb shell input keyevent 55
@@ -70,6 +82,8 @@ sleep 3
 rm out/recording
 wait $rec
 dump out/ui_final.xml
+foreground
+adb logcat -d > out/logcat.txt
 
 ffmpeg -y -framerate 3 -i out/frames/f%04d.png -vf "scale=trunc(iw/4)*2:trunc(ih/4)*2" -c:v libx264 -pix_fmt yuv420p out/demo.mp4
 

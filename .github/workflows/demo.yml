@@ -26,6 +26,8 @@ jobs:
 
       - run: gradle assembleDebug
 
+      - run: sudo apt-get update && sudo apt-get install -y ffmpeg
+
       - name: Enable KVM
         run: |
           echo 'KERNEL=="kvm", GROUP="kvm", MODE="0666", OPTIONS+="static_node=kvm"' | sudo tee /etc/udev/rules.d/99-kvm4all.rules
@@ -54,7 +56,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
           mkdir /tmp/demo-video
-          cp out/demo.mp4 out/*.xml out/*.txt /tmp/demo-video/ || true
+          rm -f out/recording
+          cp -r out/. /tmp/demo-video/
           cd /tmp/demo-video
           git init -b demo-video
           git config user.name github-actions
