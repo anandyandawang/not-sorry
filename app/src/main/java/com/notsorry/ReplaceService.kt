@@ -16,10 +16,7 @@ val REPLACEMENTS = listOf(
 
 class ReplaceService : AccessibilityService() {
 
-    private val bannedWordRegex = Regex(
-        """(?<![\p{L}\p{N}_])${Regex.escape(BANNED_WORD)}(?=[\s\p{P}])""",
-        RegexOption.IGNORE_CASE,
-    )
+    private val bannedWordRegex = Regex(Regex.escape(BANNED_WORD), RegexOption.IGNORE_CASE)
 
     private var lastInsertedText: String? = null
 

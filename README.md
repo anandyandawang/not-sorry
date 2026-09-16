@@ -1,6 +1,6 @@
 # Not Sorry
 
-A tiny Android app that replaces the word "sorry" with a random food or animal as you type, in any app. It uses an AccessibilityService, the same way Texpand works.
+A tiny Android app that replaces "sorry" with a random food or animal the moment you finish typing it, in any app. It matches anywhere, even inside longer words like "sorryish". It uses an AccessibilityService, the same way Texpand works.
 
 Edit the banned word and the replacement list at the top of `app/src/main/java/com/notsorry/ReplaceService.kt`.
 
@@ -45,4 +45,3 @@ Android may turn the service off after an update or reinstall. Repeat these step
 - **Web pages inside browsers.** Text fields in Chrome and other browsers sometimes fire the events and sometimes do not, and setting text can reset the cursor or break in-page autocomplete. Results vary by site.
 - **Rich text or formatted fields.** `ACTION_SET_TEXT` writes plain text. In an editor with bold, links, or inline images, the formatting can be lost when the field is rewritten.
 - **Keyboard suggestion strips and search bars in launchers.** These are often not real editable fields, so no event is sent.
-- **Voice typing.** Speech input inserts whole phrases at once. The word is replaced only if the inserted text ends with a space or punctuation after "sorry".
