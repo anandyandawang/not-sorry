@@ -40,19 +40,19 @@ class ReplaceService : AccessibilityService() {
         if (replacedText == text) return
 
         lastInsertedText = replacedText
-        node.setText(replacedText)
-        node.setCursor(cursor + cursorShift)
+        node.performSetText(replacedText)
+        node.performSetSelection(cursor + cursorShift)
     }
 
     override fun onInterrupt() {}
 
-    private fun AccessibilityNodeInfo.setText(text: String) {
+    private fun AccessibilityNodeInfo.performSetText(text: String) {
         val arguments = Bundle()
         arguments.putCharSequence(AccessibilityNodeInfo.ACTION_ARGUMENT_SET_TEXT_CHARSEQUENCE, text)
         performAction(AccessibilityNodeInfo.ACTION_SET_TEXT, arguments)
     }
 
-    private fun AccessibilityNodeInfo.setCursor(position: Int) {
+    private fun AccessibilityNodeInfo.performSetSelection(position: Int) {
         val arguments = Bundle()
         arguments.putInt(AccessibilityNodeInfo.ACTION_ARGUMENT_SELECTION_START_INT, position)
         arguments.putInt(AccessibilityNodeInfo.ACTION_ARGUMENT_SELECTION_END_INT, position)

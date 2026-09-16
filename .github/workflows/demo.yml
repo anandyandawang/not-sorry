@@ -5,6 +5,7 @@ on:
     paths:
       - .github/workflows/demo.yml
       - demo/record.sh
+      - app/**
 
 permissions:
   contents: write
