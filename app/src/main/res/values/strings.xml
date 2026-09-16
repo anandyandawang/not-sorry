@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="app_name">Not Sorry</string>
+    <string name="open_accessibility_settings">Open Accessibility settings</string>
+    <string name="service_description">Replaces the word "sorry" with a random food or animal as you type, in any app.</string>
+</resources>
