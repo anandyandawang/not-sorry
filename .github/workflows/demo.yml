@@ -1,7 +1,9 @@
 name: demo
 
 on:
-  workflow_dispatch:
+  push:
+    paths:
+      - .github/workflows/demo.yml
 
 permissions:
   contents: write
