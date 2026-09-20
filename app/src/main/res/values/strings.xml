@@ -2,5 +2,5 @@
 <resources>
     <string name="app_name">Not Sorry</string>
     <string name="open_accessibility_settings">Open Accessibility settings</string>
-    <string name="service_description">Replaces the word "sorry" with a random food or animal as you type, in any app.</string>
+    <string name="service_description">Replaces the word "sorry" with a random food or animal as you type, in any app. Turns itself off 24 hours after you turn it on.</string>
 </resources>
