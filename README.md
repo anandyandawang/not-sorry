@@ -2,7 +2,9 @@
 
 A tiny Android app that replaces "sorry" with a random food or animal the moment you finish typing it, in any app. It matches anywhere, even inside longer words like "sorryish". It uses an AccessibilityService, the same way Texpand works.
 
-Edit the banned word and the replacement list at the top of `app/src/main/java/com/notsorry/ReplaceService.kt`.
+The service turns itself off 24 hours after you turn it on. Turn it on again in Accessibility settings to get another 24 hours.
+
+Edit the banned word, the replacement list, and the active duration at the top of `app/src/main/java/com/notsorry/ReplaceService.kt`.
 
 ## Build and install
 
